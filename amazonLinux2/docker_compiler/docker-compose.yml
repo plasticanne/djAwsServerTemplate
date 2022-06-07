@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  django:
+    build: ./compiler_env
+    container_name: 'docker_compiler'
+    ports:
+      - 8000:8000
+    #command: tail -F /dev/null
+    command: bash -c  "cd /code/dj_aws_template/dj_aws_template/ && python3 manage.py runserver"
+    volumes:
+      - '..\..\.:/code'
+    environment:
+      - IS_DOCKER=True
